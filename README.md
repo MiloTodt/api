@@ -75,7 +75,13 @@ gem 'rails-erd'
 gem 'graphiql-rails', '1.4.4'
 
 test group:
-gem 'rspec'
+gem 'rspec-rails'
+gem 'factory_bot_rails'
+
+# to test
+rake db:migrate && rake db:test:prepare
+rake spec
+
 
 
 # do
@@ -129,3 +135,8 @@ rake db:seed
 
 rails g model Circle
 rails g migration AddCircleRefToUsers circle:references
+
+rails g graphql:object User fname:String lname:String email:String last_sign_in_at:String circle_id:Integer
+
+# example test
+see /spec/users.rb and /spec/models/user_spec.rb

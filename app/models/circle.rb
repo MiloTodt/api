@@ -1,3 +1,3 @@
 class Circle < ApplicationRecord
-    has_many :people
+    has_many :users
 end
