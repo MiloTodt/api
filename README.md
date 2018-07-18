@@ -96,6 +96,7 @@ rails generate mailer UserMailer
 ```
 
 # Modify User
+```
 -remove comments in migration
 -config actionmailer
 -add :lockable, :confirmable to user.rb
@@ -117,7 +118,7 @@ rails g migration add_authentication_token_to_users auth_token:string
 rails generate graphql:install --batch
 bundle install
 rake db:migrate
-
+```
 # Make welcome page with
 ```
 rails generate controller WelcomePage welcome
