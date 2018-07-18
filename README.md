@@ -72,13 +72,26 @@ gem 'graphiql-rails
 development group:
   gem 'faker'
 gem 'rails-erd'
-gem 'graphiql-rails'
+gem 'graphiql-rails', '1.4.4'
+
+test group:
+gem 'rspec'
+
 
 # do
+bundle install
 rails generate rspec:install
 rails generate devise:install
-rails generate graphql:install
+rails g devise:views
+rails generate devise User
 
+-remove comments in migration
+-config actionmailer
+-add :lockable, :confirmable to user.rb
+rake db:migrate
+
+rails generate graphql:install
+bundle install
 rake db:migrate
 
 # Make welcome page with
