@@ -38,7 +38,7 @@ gem install rails
 sudo apt-get -y install postgresql postgresql-contrib libpq-dev
 sudo -u postgres createuser -s YOUROWNUSERNAME
 gem install aws-sdk
-
+```
 # Setup Postgres
 https://www.howtoforge.com/tutorial/ruby-on-rails-ror-with-postgresql-on-ubuntu-16-04/
 
@@ -86,12 +86,14 @@ rspec
 
 
 # do
+```
 bundle install
 rails generate rspec:install
 rails generate devise:install
 rails g devise:views
 rails generate devise User
 rails generate mailer UserMailer
+```
 
 # Modify User
 -remove comments in migration
@@ -134,20 +136,21 @@ Rails.application.routes.draw do
 # DB seeds
 
 add to seed.rb
-
+```
 User.create(email: "test@test.com", password: 'test', password_confirmation: 'test')
 10.times do
 User.create(email:  Faker::Internet.email, password: "password", password_confirmation: "password", fname: Faker::Name.first_name, lname: Faker::Name.last_name)
-
+```
+```
 rake db:seed
 
 rails g model Circle
 rails g migration AddCircleRefToUsers circle:references
 
 rails g graphql:object User fname:String lname:String email:String last_sign_in_at:String circle_id:Integer
-
+```
 # example test
-make sure this is at the top of spec/spec_helper
+make sure this is at the top of spec/rails_helper
 
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
