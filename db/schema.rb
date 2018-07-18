@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_18_150115) do
+ActiveRecord::Schema.define(version: 2018_07_18_203343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_07_18_150115) do
     t.string "phone_number"
     t.string "address"
     t.bigint "circle_id"
+    t.string "auth_token", default: ""
     t.index ["circle_id"], name: "index_users_on_circle_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

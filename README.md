@@ -81,7 +81,7 @@ gem 'shoulda-matchers'
 
 # to test
 rake db:migrate && rake db:test:prepare
-rake spec
+rspec
 
 
 
@@ -93,6 +93,7 @@ rails g devise:views
 rails generate devise User
 rails generate mailer UserMailer
 
+# Modify User
 -remove comments in migration
 -config actionmailer
 -add :lockable, :confirmable to user.rb
@@ -105,6 +106,11 @@ rails g migration AddDetailstoUsers
 
 
 add fields fname, lname, phone_number, address as strings
+rails g migration add_authentication_token_to_users auth_token:string
+
+  def change
+    add_column :users, :auth_token, :string, default: ""
+  end
 
 rails generate graphql:install --batch
 bundle install
@@ -148,3 +154,6 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 
 see /spec/users.rb and /spec/models/user_spec.rb and /spec/helpers/users_helper_spec.rb for example tests
+
+# to test
+rake db:migrate && rake db:test:prepare && rspec
