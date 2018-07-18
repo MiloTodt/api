@@ -7,8 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create(email: "test@test.com", password: 'test', password_confirmation: 'test')
 10.times do
-User.create(email:  Faker::Internet.email, password: "password", password_confirmation: "password")
-
+User.create(email:  Faker::Internet.email, password: "password", password_confirmation: "password", fname: Faker::Name.first_name, lname: Faker::Name.last_name)
 #    Person.create(fname: Faker::Name.first_name, lname: Faker::Name.last_name, email: Faker::Internet.email)
 end
 # 10.times do

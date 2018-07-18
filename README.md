@@ -89,8 +89,16 @@ rails generate devise User
 -config actionmailer
 -add :lockable, :confirmable to user.rb
 rake db:migrate
+rails g migration AddDetailstoUsers 
+    add_column :users, :fname, :string
+    add_column :users, :lname, :string
+    add_column :users, :phone_number, :string
+    add_column :users, :address, :string
 
-rails generate graphql:install
+
+add fields fname, lname, phone_number, address as strings
+
+rails generate graphql:install --batch
 bundle install
 rake db:migrate
 
@@ -108,3 +116,16 @@ Rails.application.routes.draw do
   end
  ```
  To make it the default landing
+
+# DB seeds
+
+add to seed.rb
+
+User.create(email: "test@test.com", password: 'test', password_confirmation: 'test')
+10.times do
+User.create(email:  Faker::Internet.email, password: "password", password_confirmation: "password", fname: Faker::Name.first_name, lname: Faker::Name.last_name)
+
+rake db:seed
+
+rails g model Circle
+rails g migration AddCircleRefToUsers circle:references

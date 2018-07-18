@@ -61,10 +61,22 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "api_#{Rails.env}"
-
-  config.action_mailer.perform_caching = false
-
+  # config.active_job.queue_name_prefix = "CarenAWS_#{Rails.env}"
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # Don't care if the mailer can't send.
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'http://ec2-18-191-182-41.us-east-2.compute.amazonaws.com:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name:      'caren.test.email@gmail.com',
+    password:       'carencaren',
+    domain:         'localhost:3000' ,
+    address:       'smtp.gmail.com',
+    port:          '587',
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
