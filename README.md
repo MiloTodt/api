@@ -77,6 +77,7 @@ gem 'graphiql-rails', '1.4.4'
 test group:
 gem 'rspec-rails'
 gem 'factory_bot_rails'
+gem 'shoulda-matchers'
 
 # to test
 rake db:migrate && rake db:test:prepare
@@ -90,6 +91,7 @@ rails generate rspec:install
 rails generate devise:install
 rails g devise:views
 rails generate devise User
+rails generate mailer UserMailer
 
 -remove comments in migration
 -config actionmailer
@@ -139,4 +141,10 @@ rails g migration AddCircleRefToUsers circle:references
 rails g graphql:object User fname:String lname:String email:String last_sign_in_at:String circle_id:Integer
 
 # example test
-see /spec/users.rb and /spec/models/user_spec.rb
+make sure this is at the top of spec/spec_helper
+
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__)
+require 'rspec/rails'
+
+see /spec/users.rb and /spec/models/user_spec.rb and /spec/helpers/users_helper_spec.rb for example tests
